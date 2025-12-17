@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Che-che – Équipe 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-light: #8BC34A;
+            --primary-dark: #2E7D32;
+            --secondary: #FF6B9D;
+            --secondary-light: #FF8E53;
+            --accent: #FDD835;
+            --text: #1b2a22;
+            --text-light: #E8F5E9;
+            --bg: #f3f7f5;
+            --bg-gradient: linear-gradient(135deg, #f3f7f5 0%, #e8f5e9 100%);
+            --shadow: 0 10px 40px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden; }
+        .confetti { position: absolute; width: 10px; height: 10px; border-radius: 50%; opacity: 0.1; animation: fall linear infinite; transform-origin: center; }
+        @keyframes fall { 0% { transform: translateY(-100%) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+        header { text-align: center; padding: 80px 20px 40px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); position: relative; overflow: hidden; }
+        header h1 { font-size: 3.5rem; font-weight: 800; color: white; margin-bottom: 10px; text-shadow: 3px 3px 6px rgba(0,0,0,0.2); animation: bounce 2s ease-in-out infinite; }
+        header p { font-size: 1.3rem; color: var(--text-light); font-weight: 600; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        nav { display: flex; justify-content: center; gap: 2rem; padding: 1rem; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        nav a { text-decoration: none; color: var(--primary-dark); font-weight: 600; padding: 0.5rem 1rem; position: relative; transition: var(--transition); }
+        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--primary); transition: var(--transition); }
+        nav a:hover::after { width: 100%; }
+        #langBtn { position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(255,107,157,0.3); transition: var(--transition); z-index: 1001; }
+        #langBtn:hover { transform: scale(1.1); }
+        .timer-container { text-align: center; margin: 2rem auto; padding: 1.5rem; background: white; border-radius: 20px; box-shadow: var(--shadow); max-width: 800px; border: 3px solid var(--primary); }
+        .timer-title { font-size: 1.8rem; color: var(--primary-dark); margin-bottom: 1rem; }
+        .timer { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .timer-box { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 1.5rem; border-radius: 15px; min-width: 120px; box-shadow: 0 5px 20px rgba(76,175,80,0.3); text-align: center; }
+        .timer-value { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .timer-label { font-size: 0.9rem; opacity: 0.9; }
+        .chenille-container, .theme-section, .bloc, .roles-section, .sponsors-container, .contact-container { width: 90%; max-width: 1200px; margin: 4rem auto; padding: 2.5rem; background: white; border-radius: 30px; box-shadow: var(--shadow); }
+        .theme-section { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+        .theme-content { flex: 1; min-width: 300px; }
+        .theme-content h2 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1.5rem; text-align: center; }
+        .theme-content p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; }
+        .theme-illustration { flex: 1; min-width: 300px; display: flex; justify-content: center; align-items: center; }
+        .theme-illustration img { max-width: 100%; border-radius: 15px; box-shadow: var(--shadow); }
+        .chenille-body { display: flex; align-items: center; justify-content: center; margin: 3rem 0; flex-wrap: wrap; position: relative; }
+        .body-part { position: relative; display: flex; align-items: center; justify-content: center; margin: 0 -15px; }
+        .body-part::before { content: ''; position: absolute; width: 30px; height: 20px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); border-radius: 50%; z-index: -1; left: -15px; transform: scaleY(0.5) rotate(15deg); box-shadow: 0 2px 8px rgba(76,175,80,0.3); }
+        .body-part:first-child::before { display: none; }
+        .segment { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); border: 4px solid var(--primary-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); box-shadow: 0 5px 20px rgba(76,175,80,0.2); position: relative; z-index: 1; animation: wiggle 3s ease-in-out infinite; }
+        .segment:hover { transform: scale(1.15) translateY(-10px); box-shadow: 0 10px 30px rgba(76,175,80,0.4); border-color: var(--secondary); }
+        .segment-name { font-size: 1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .chenille-head { width: 140px; height: 140px; border-radius: 50%; background-color: var(--primary); border: 5px solid var(--primary-dark); position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(253,216,53,0.4); animation: wiggle 3s ease-in-out infinite; z-index: 2; margin-right: -15px; }
+        .chenille-head::before, .chenille-head::after { content: ""; width: 20px; height: 20px; background-color: white; border-radius: 50%; position: absolute; top: 30px; }
+        .chenille-head::before { left: 40px; }
+        .chenille-head::after { right: 40px; }
+        .chenille-head .eye-left, .chenille-head .eye-right { width: 10px; height: 10px; background-color: black; border-radius: 50%; position: absolute; top: 35px; }
+        .chenille-head .eye-left { left: 45px; }
+        .chenille-head .eye-right { right: 45px; }
+        .chenille-head .antenna-left, .chenille-head .antenna-right { width: 5px; height: 40px; background-color: var(--primary-dark); position: absolute; top: -30px; border-radius: 0 0 5px 5px; }
+        .chenille-head .antenna-left { left: 30px; transform: rotate(-20deg); }
+        .chenille-head .antenna-right { right: 30px; transform: rotate(20deg); }
+        .chenille-head .mouth { width: 30px; height: 10px; border-bottom: 3px solid black; border-radius: 0 0 15px 15px; position: absolute; bottom: 30px; }
+        @keyframes wiggle { 0%, 100% { transform: translateY(0px) rotate(0deg); } 25% { transform: translateY(-5px) rotate(2deg); } 50% { transform: translateY(0px) rotate(0deg); } 75% { transform: translateY(-5px) rotate(-2deg); } }
+        .segment:nth-child(1) { animation-delay: 0s; }
+        .segment:nth-child(2) { animation-delay: 0.2s; }
+        .segment:nth-child(3) { animation-delay: 0.4s; }
+        .segment:nth-child(4) { animation-delay: 0.6s; }
+        .segment:nth-child(5) { animation-delay: 0.8s; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1000; animation: fadeIn 0.3s; }
+        .modal-content { background: white; padding: 2.5rem; border-radius: 25px; text-align: center; max-width: 500px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: slideUp 0.4s; position: relative; }
+        .modal-content h3 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 1rem; }
+        .modal-content p { font-size: 1.1rem; color: #666; margin-bottom: 1rem; }
+        .modal-content .role { display: inline-block; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.6rem 1.5rem; border-radius: 20px; font-weight: bold; margin-top: 1rem; }
+        .close-modal { position: absolute; top: 15px; right: 15px; font-size: 1.8rem; cursor: pointer; color: #999; transition: var(--transition); }
+        .close-modal:hover { color: #333; transform: rotate(90deg); }
+        .bloc h2 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 2rem; text-align: center; }
+        .galerie { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .galerie img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: var(--transition); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .galerie img:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .planning-container { width: 100%; overflow-x: auto; margin: 2rem auto; }
+        .planning-table { width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); }
+        .planning-table th, .planning-table td { padding: 1rem; text-align: center; border: 1px solid #e0e0e0; }
+        .planning-table th { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; font-weight: 600; }
+        .planning-table tr:nth-child(even) { background: #f9f9f9; }
+        .planning-table tr:nth-child(odd) { background: #ffffff; }
+        .planning-table tr:hover { background: #f0f8ff; }
+        .status { display: inline-block; padding: 0.5rem 1rem; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
+        .sponsors-container { text-align: center; }
+        .sponsors-title { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1.5rem; }
+        .sponsors-thanks { font-size: 1.1rem; color: var(--text); margin-bottom: 2rem; line-height: 1.6; }
+        .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; align-items: center; margin-bottom: 2rem; }
+        .sponsor-logo { height: 100px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(0,0,0,0.1)); transition: var(--transition); }
+        .sponsor-logo:hover { transform: scale(1.05); }
+        .social-section { text-align: center; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-radius: 20px; border: 2px solid var(--secondary); }
+        .social-link { display: inline-flex; align-items: center; gap: 0.8rem; padding: 1rem 2rem; background: white; border-radius: 15px; text-decoration: none; color: var(--secondary); font-weight: bold; font-size: 1.1rem; transition: var(--transition); box-shadow: 0 4px 15px rgba(194,24,91,0.2); }
+        .social-link:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(194,24,91,0.3); background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%); color: white; }
+        footer { text-align: center; padding: 2.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; margin-top: 4rem; }
+        footer a { color: #FFF59D; font-weight: bold; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 1000; }
+        .lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+        .contact-container { text-align: center; }
+        .contact-container h2 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 2rem; }
+        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; margin: 0 auto; }
+        .contact-form label { font-weight: 600; color: var(--primary-dark); text-align: left; margin-bottom: 0.5rem; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1rem; transition: var(--transition); }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); }
+        .contact-form textarea { min-height: 150px; resize: vertical; }
+        .contact-form button { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3); margin-top: 1rem; }
+        .contact-form button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4); }
+        .role-card { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); color: white; padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; box-shadow: 0 5px 20px rgba(76,175,80,0.2); }
+        .role-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .role-card p { font-size: 1rem; opacity: 0.9; }
+        @media (max-width: 768px) {
+            .chenille-body { flex-direction: column; align-items: center; }
+            .body-part::before { display: none; }
+            .planning-table { font-size: 0.8rem; }
+            .planning-table th, .planning-table td { padding: 0.5rem; }
+            .theme-section { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti-container" id="confettiContainer"></div>
+    <button id="langBtn">EN</button>
+    <header>
+        <h1 data-fr="La Che-che 🐛" data-en="La Che-che 🐛">La Che-che 🐛</h1>
+        <p data-fr="Équipe officielle - Course en Cours 2026" data-en="Official Team - Course en Cours 2026">Équipe officielle - Course en Cours 2026</p>
+    </header>
+    <nav>
+        <a href="#equipe" data-fr="🐛 Équipe" data-en="🐛 Team">🐛 Équipe</a>
+        <a href="#course" data-fr="🏆 Course en Cours" data-en="🏆 Course en Cours">🏆 Course en Cours</a>
+        <a href="#theme" data-fr="🎨 Thème ?" data-en="🎨 Theme?">🎨 Thème </a>
+        <a href="#galerie" data-fr="📸 Galerie" data-en="📸 Gallery">📸 Galerie</a>
+        <a href="#chronologie" data-fr="📅 Planning" data-en="📅 Schedule">📅 Planning</a>
+        <a href="#roles" data-fr="📋 Rôles" data-en="📋 Roles">📋 Rôles</a>
+        <a href="#sponsors" data-fr="🤝 Sponsors" data-en="🤝 Sponsors">🤝 Sponsors</a>
+        <a href="#contact" data-fr="📩 Contact" data-en="📩 Contact">📩 Contact</a>
+    </nav>
+    <div class="timer-container">
+        <h2 class="timer-title" data-fr="⏳ Compte à rebours jusqu'à la finale nationale" data-en="⏳ Countdown to National Final">⏳ Compte à rebours jusqu'à la finale nationale</h2>
+        <div class="timer" id="countdown">
+            <div class="timer-box"><div class="timer-value" id="days">00</div><div class="timer-label" data-fr="Jours" data-en="Days">Jours</div></div>
+            <div class="timer-box"><div class="timer-value" id="hours">00</div><div class="timer-label" data-fr="Heures" data-en="Hours">Heures</div></div>
+            <div class="timer-box"><div class="timer-value" id="minutes">00</div><div class="timer-label" data-fr="Minutes" data-en="Minutes">Minutes</div></div>
+            <div class="timer-box"><div class="timer-value" id="seconds">00</div><div class="timer-label" data-fr="Secondes" data-en="Seconds">Secondes</div></div>
+        </div>
+    </div>
+    <section id="course" class="bloc">
+        <h2 data-fr="🏆 Qu’est-ce que Course en Cours ?" data-en="🏆 What is Course en Cours?">🏆 Qu’est-ce que Course en Cours ?</h2>
+        <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <p data-fr="Course en Cours est un dispositif pédagogique original, centré sur les sciences et la technologie, qui propose aux collégiens et lycéens de monter une équipe pour concevoir, fabriquer et faire courir une mini-voiture de course en utilisant les mêmes outils et processus que les professionnels de la course automobile." data-en="Course en Cours is an original educational program focused on science and technology, inviting middle and high school students to form a team to design, build, and race a miniature race car using the same tools and processes as professional motorsport engineers.">Course en Cours est un dispositif pédagogique original, centré sur les sciences et la technologie, qui propose aux collégiens et lycéens de monter une équipe pour concevoir, fabriquer et faire courir une mini-voiture de course en utilisant les mêmes outils et processus que les professionnels de la course automobile.</p>
+                <p data-fr="Notre équipe, <strong>La Che-che</strong>, participe à l’édition 2026 avec passion et détermination !" data-en="Our team, <strong>La Che-che</strong>, is participating in the 2026 edition with passion and determination!">Notre équipe, <strong>La Che-che</strong>, participe à l’édition 2026 avec passion et détermination !</p>
+                <a href="https://www.course-en-cours.com" target="_blank" style="display: inline-block; margin-top: 1rem; background: var(--secondary); color: white; padding: 0.8rem 1.5rem; border-radius: 20px; text-decoration: none; font-weight: bold; transition: var(--transition);" data-fr="En savoir plus" data-en="Learn more">En savoir plus</a>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <img src="https://course-en-cours.com/wp-content/uploads/2022/09/cec_BLEU.png" alt="Course en Cours - Mini voiture" style="width: 100%; border-radius: 15px; box-shadow: var(--shadow);">
+            </div>
+        </div>
+    </section>
+    <section id="theme" class="theme-section">
+        <div class="theme-content">
+            <h2 data-fr="🎨 Pourquoi avoir choisi le thème de la chenille festive ?" data-en="🎨 Why did we choose the festive caterpillar theme?">🎨 Pourquoi avoir choisi le thème de la chenille festive ?</h2>
+            <p data-fr="Nous avons choisi la <strong>chenille festive</strong> comme symbole de notre équipe car <strong>La Che-che</strong> est avant tout une danse et une musique festive." data-en="We chose the <strong>festive caterpillar</strong> as our team symbol because <strong>La Che-che</strong> is first and foremost a festive dance and music, popular in the Caribbean and West Africa.">Nous avons choisi la <strong>chenille festive</strong> comme symbole de notre équipe car <strong>La Che-che</strong> est avant tout une danse et une musique festive. Nous l'avons egalement choisi car c'est les 20 ans de course en cours.</p>
+            <p data-fr="La chenille, quant à elle, représente notre engagement pour le <strong>développement durable</strong> : elle symbolise la transformation, la croissance et le respect de la nature, des valeurs essentielles pour notre projet." data-en="The caterpillar, on the other hand, represents our commitment to <strong>sustainable development</strong>: it symbolizes transformation, growth, and respect for nature, essential values for our project.">La chenille, quant à elle, représente notre engagement pour le <strong>développement durable</strong> : elle symbolise la transformation, la croissance et le respect de la nature, des valeurs essentielles pour notre projet.</p>
+            <p data-fr="Ensemble, ces deux éléments forment une identité unique : <strong>une équipe dynamique, festive et engagée pour un avenir plus durable !</strong>" data-en="Together, these two elements form a unique identity: <strong>a dynamic, festive team committed to a more sustainable future!</strong>">Ensemble, ces deux éléments forment une identité unique : <strong>une équipe dynamique, festive et engagée pour un avenir plus durable !</strong></p>
+        </div>
+        <div class="theme-illustration">
+            <img src="cheche.png" alt="Chenille festive - Symbole de transformation et de fête" style="max-width: 300px; border-radius: 15px;">
+        </div>
+    </section>
+    <section id="equipe" class="chenille-container">
+        <h2 data-fr="🎉 Notre Chenille d'Équipe 🎉" data-en="🎉 Our Team Caterpillar 🎉">🎉 Notre Chenille d'Équipe 🎉</h2>
+        <div class="chenille-body">
+            <div class="chenille-head">
+                <div class="eye-left"></div>
+                <div class="eye-right"></div>
+                <div class="antenna-left"></div>
+                <div class="antenna-right"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="body-part"><div class="segment" data-member="1"><span class="segment-name" data-fr="Zoé" data-en="Zoé">Zoé</span></div></div>
+            <div class="body-part"><div class="segment" data-member="2"><span class="segment-name" data-fr="Marion" data-en="Marion">Marion</span></div></div>
+            <div class="body-part"><div class="segment" data-member="3"><span class="segment-name" data-fr="Martin" data-en="Martin">Martin</span></div></div>
+            <div class="body-part"><div class="segment" data-member="4"><span class="segment-name" data-fr="Louison" data-en="Louison">Louison</span></div></div>
+            <div class="body-part"><div class="segment" data-member="5"><span class="segment-name" data-fr="Elvis" data-en="Elvis">Elvis</span></div></div>
+        </div>
+    </section>
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modalName"></h3>
+            <p id="modalRole" class="role"></p>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    <section id="galerie" class="bloc">
+        <h2 data-fr="📸 Galerie photo" data-en="📸 Photo Gallery">📸 Galerie photo</h2>
+        <div class="galerie">
+            <img src="12.JPG" alt="Team 1">
+            <img src="5.jpeg" alt="Team 2">
+            <img src="20.jpeg" alt="Team 4">
+        </div>
+    </section>
+    <section id="chronologie" class="bloc">
+        <h2 data-fr="📅 Planning – Course en Cours 2026" data-en="📅 Schedule – Course en Cours 2026">📅 Planning – Course en Cours 2026</h2>
+        <div class="planning-container">
+            <table class="planning-table">
+                <thead>
+                    <tr>
+                        <th data-fr="Étape" data-en="Step">Étape</th>
+                        <th data-fr="Date" data-en="Date">Date</th>
+                        <th data-fr="Description" data-en="Description">Description</th>
+                        <th data-fr="Statut" data-en="Status">Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-fr="Conception coque" data-en="Shell design">Conception coque</td>
+                        <td>Novembre–Décembre 2025</td>
+                        <td data-fr="Conception et modélisation 3D de la coque de la voiture." data-en="Design and 3D modeling of the car shell.">Conception et modélisation 3D de la coque de la voiture.</td>
+                        <td><span class="status in progress" data-fr="Terminé" data-en="Done">Terminé</span></td>
+                    </tr>
+                    <tr>
+                        <td data-fr="Conception programmes" data-en="Program design">Conception programmes</td>
+                        <td>Janvier 2026</td>
+                        <td data-fr="Développement des programmes de contrôle et de gestion de la voiture." data-en="Development of control and management programs for the car.">Développement des programmes de contrôle et de gestion de la voiture.</td>
+                        <td><span class="status in progress" data-fr="En cours" data-en="In progress">En cours</span></td>
+                    </tr>
+                    <tr>
+                        <td data-fr="Demi-finales" data-en="Semi-finals">Demi-finales</td>
+                        <td>Avril 2026 – Angers</td>
+                        <td data-fr="Participation aux demi-finales régionales à Angers." data-en="Participation in the regional semi-finals in Angers.">Participation aux demi-finales régionales à Angers.</td>
+                        <td><span class="status upcoming" data-fr="À venir" data-en="Upcoming">À venir</span></td>
+                    </tr>
+                    <tr>
+                        <td data-fr="Finales académiques" data-en="Academic finals">Finales académiques</td>
+                        <td>30 avril 2026 – Nantes</td>
+                        <td data-fr="Finales académiques à Nantes pour qualifier l'équipe pour les finales nationales." data-en="Academic finals in Nantes to qualify the team for the national finals.">Finales académiques à Nantes pour qualifier l'équipe pour les finales nationales.</td>
+                        <td><span class="status upcoming" data-fr="À venir" data-en="Upcoming">À venir</span></td>
+                    </tr>
+                    <tr>
+                        <td data-fr="Finales nationales" data-en="National finals">Finales nationales</td>
+                        <td>27 mai 2026 – Paris</td>
+                        <td data-fr="Finales nationales à Paris pour concourir contre les meilleures équipes de France." data-en="National finals in Paris to compete against the best teams in France.">Finales nationales à Paris pour concourir contre les meilleures équipes de France.</td>
+                        <td><span class="status upcoming" data-fr="À venir" data-en="Upcoming">À venir</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section id="roles" class="roles-section">
+        <h2 data-fr="📋 Les Rôles de l'Équipe" data-en="📋 Team Roles">📋 Les Rôles de l'Équipe</h2>
+        <div class="role-card">
+            <h3 data-fr="Chef d'Équipe" data-en="Team Leader">Chef d'Équipe</h3>
+            <p data-fr="Responsable de la coordination de l'équipe, de la gestion du temps et de la stratégie globale. Le chef d'équipe s'assure que chaque membre travaille efficacement et que les objectifs sont atteints." data-en="Responsible for team coordination, time management, and overall strategy. The team leader ensures that each member works efficiently and that goals are met.">Responsable de la coordination de l'équipe, de la gestion du temps et de la stratégie globale.</p>
+        </div>
+        <div class="role-card">
+            <h3 data-fr="Responsable Style et Design" data-en="Style and Design Manager">Responsable Style et Design</h3>
+            <p data-fr="Création du design et de l'identité visuelle de la voiture. Ce rôle inclut la conception graphique, le choix des couleurs et l'esthétique générale du projet." data-en="Creation of the design and visual identity of the car. This role includes graphic design, color selection, and the overall aesthetics of the project.">Création du design et de l'identité visuelle de la voiture.</p>
+        </div>
+        <div class="role-card">
+            <h3 data-fr="Ingénieur de Conception" data-en="Design Engineer">Ingénieur de Conception</h3>
+            <p data-fr="Modélisation 3D et conception technique de la voiture. Ce rôle implique la création des plans, la simulation et l'optimisation des performances." data-en="3D modeling and technical design of the car. This role involves creating plans, simulations, and optimizing performance.">Modélisation 3D et conception technique de la voiture.</p>
+        </div>
+        <div class="role-card">
+            <h3 data-fr="Responsable Communication" data-en="Communication Manager">Responsable Communication</h3>
+            <p data-fr="Gestion des réseaux sociaux, des relations publiques et de la communication externe. Ce rôle est essentiel pour promouvoir l'équipe et le projet." data-en="Management of social media, public relations, and external communication. This role is essential for promoting the team and the project.">Gestion des réseaux sociaux et de la communication externe.</p>
+        </div>
+        <div class="role-card">
+            <h3 data-fr="Ingénieur Motoriste" data-en="Motor Engineer">Ingénieur Motoriste</h3>
+            <p data-fr="Recherche et développement des solutions techniques pour le moteur et la propulsion. Ce rôle est crucial pour la performance de la voiture." data-en="Research and development of technical solutions for the engine and propulsion. This role is crucial for the car's performance.">Recherche et développement des solutions techniques pour le moteur.</p>
+        </div>
+        <div class="role-card">
+            <h3 data-fr="Ingénieur de Fabrication" data-en="Fabrication Engineer">Ingénieur de Fabrication</h3>
+            <p data-fr="Fabrication et assemblage des pièces de la voiture. Ce rôle inclut l'utilisation d'outils et de machines pour construire la voiture selon les plans." data-en="Manufacturing and assembling the car parts. This role includes using tools and machines to build the car according to the plans.">Fabrication et assemblage des pièces de la voiture.</p>
+        </div>
+    </section>
+    <section id="sponsors" class="sponsors-container">
+        <h2 class="sponsors-title" data-fr="🤝 Nos Sponsors" data-en="🤝 Our Sponsors">🤝 Nos Sponsors</h2>
+        <p class="sponsors-thanks" data-fr="Un grand merci à nos sponsors pour leur soutien précieux ! Grâce à eux, nous pouvons innover et donner le meilleur de nous-mêmes." data-en="A big thank you to our sponsors for their precious support! Thanks to them, we can innovate and give our best.">Un grand merci à nos sponsors pour leur soutien précieux ! Grâce à eux, nous pouvons innover et donner le meilleur de nous-mêmes.</p>
+        <div class="sponsors-grid">
+            <img src="renualt.png" alt="Sponsor 1" class="sponsor-logo">
+            <img src="ministere.jpg" alt="Sponsor 2" class="sponsor-logo">
+            <img src="dassault system.png" alt="Sponsor 3" class="sponsor-logo">
+            <img src="elles bougent.png" alt="Sponsor 4" class="sponsor-logo">
+            <img src="gilot.jpg" alt="Sponsor 4" class="sponsor-logo">
+            <img src="lca.png" alt="Sponsor 4" class="sponsor-logo">
+            <img src="heraud.jpg" alt="Sponsor 4" class="sponsor-logo">
+            <img src="pfa.png" alt="Sponsor 4" class="sponsor-logo">
+            <img src="amiaud.png" alt="Sponsor 4" class="sponsor-logo">
+            <img src="gaec.png" alt="Sponsor 4" class="sponsor-logo">
+        </div>
+    </section>
+    <div class="social-section">
+        <h3 data-fr="📸 Suivez-nous sur Instagram !" data-en="📸 Follow us on Instagram!">📸 Suivez-nous sur Instagram !</h3>
+        <a href="https://www.instagram.com/che.che.85/" target="_blank" class="social-link">@che-che.85</a>
+    </div>
+    <section id="contact" class="contact-container">
+        <h2 data-fr="📩 Contactez-nous" data-en="📩 Contact Us">📩 Contactez-nous</h2>
+        <form action="https://formspree.io/f/xvgeqgwy" method="POST" class="contact-form">
+            <div>
+                <label for="name" data-fr="Votre nom" data-en="Your name">Votre nom</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email" data-fr="Votre email" data-en="Your email">Votre email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="message" data-fr="Votre message" data-en="Your message">Votre message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" data-fr="Envoyer" data-en="Send">Envoyer</button>
+        </form>
+    </section>
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-img">
+    </div>
+    <footer>
+        <p>📸 Instagram : <a href="https://www.instagram.com/che.che.85/" target="_blank">@che-che.85</a></p>
+        <p style="margin-top: 1rem; opacity: 0.9;">🎉 Ensemble, faisons de 2026 une année de victoire et d’innovation ! 🏁</p>
+        <p style="margin-top: 0.5rem; opacity: 0.9;">🐛 La Che-che - Course en Cours 2026 🎉</p>
+    </footer>
+    <script>
+        const membersData = {
+            '1': { name: { fr: 'Zoé', en: 'Zoé' }, role: { fr: 'Chef d\'Équipe, Ingénieur de Fabrication', en: 'Team Leader, Fabrication Engineer' }, description: { fr: 'Responsable de la coordination de l\'équipe et de la fabrication des pièces.', en: 'Responsible for team coordination and manufacturing of parts.' } },
+            '2': { name: { fr: 'Marion', en: 'Marion' }, role: { fr: 'Responsable Style et Design, Ingénieur de Conception', en: 'Style and Design Manager, Design Engineer' }, description: { fr: 'Création du design et modélisation 3D de la voiture.', en: 'Design creation and 3D modeling of the car.' } },
+            '3': { name: { fr: 'Martin', en: 'Martin' }, role: { fr: 'Ingénieur de Conception', en: 'Design Engineer' }, description: { fr: 'Modélisation 3D et conception technique de la voiture.', en: '3D modeling and technical design of the car.' } },
+            '4': { name: { fr: 'Louison', en: 'Louison' }, role: { fr: 'Responsable Communication', en: 'Communication Manager' }, description: { fr: 'Gestion des réseaux sociaux et communication externe.', en: 'Social media management and external communication.' } },
+            '5': { name: { fr: 'Elvis', en: 'Elvis' }, role: { fr: 'Ingénieur Motoriste', en: 'Motor Engineer' }, description: { fr: 'Recherche et développement des solutions techniques pour le moteur.', en: 'Research and development of technical solutions for the engine.' } }
+        };
+        let currentLang = "fr";
+        document.querySelectorAll('.segment').forEach(segment => {
+            segment.addEventListener('click', () => {
+                const memberId = segment.getAttribute('data-member');
+                const member = membersData[memberId];
+                document.getElementById('modalName').textContent = member.name[currentLang];
+                document.getElementById('modalRole').textContent = member.role[currentLang];
+                document.getElementById('modalDescription').textContent = member.description[currentLang];
+                document.getElementById('memberModal').style.display = 'flex';
+            });
+        });
+        document.querySelector('.close-modal').onclick = () => { document.getElementById('memberModal').style.display = 'none'; };
+        document.getElementById('memberModal').onclick = (e) => { if (e.target.id === 'memberModal') document.getElementById('memberModal').style.display = 'none'; };
+        document.querySelectorAll('.galerie img').forEach(img => { img.addEventListener('click', () => { document.getElementById("lightbox-img").src = img.src; document.getElementById("lightbox").style.display = "flex"; }); });
+        document.getElementById("lightbox").onclick = () => { document.getElementById("lightbox").style.display = "none"; };
+        document.getElementById("langBtn").onclick = () => {
+            currentLang = currentLang === "fr" ? "en" : "fr";
+            document.querySelectorAll("[data-fr]").forEach(el => {
+                const newContent = el.getAttribute("data-" + currentLang);
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = newContent;
+                else el.innerHTML = newContent;
+            });
+            document.getElementById("langBtn").innerText = currentLang === "fr" ? "EN" : "FR";
+        };
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#FF6B9D', '#4CAF50', '#FDD835', '#FF8E53', '#8BC34A', '#FFD700', '#FF4081', '#9C27B0', '#2196F3'];
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 8 + 5) + 's';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.opacity = Math.random() * 0.5 + 0.1;
+                confetti.style.width = Math.random() * 8 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                container.appendChild(confetti);
+            }
+        }
+        window.addEventListener('load', createConfetti);
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        function updateCountdown() {
+            const finalDate = new Date('May 27, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = finalDate - now;
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<h2 data-fr="C\'est l\'heure des finales !" data-en="It\'s finals time!">C\'est l\'heure des finales !</h2>';
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
