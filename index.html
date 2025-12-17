@@ -298,16 +298,16 @@
         <h2 class="sponsors-title" data-fr="🤝 Nos Sponsors" data-en="🤝 Our Sponsors">🤝 Nos Sponsors</h2>
         <p class="sponsors-thanks" data-fr="Un grand merci à nos sponsors pour leur soutien précieux ! Grâce à eux, nous pouvons innover et donner le meilleur de nous-mêmes." data-en="A big thank you to our sponsors for their precious support! Thanks to them, we can innovate and give our best.">Un grand merci à nos sponsors pour leur soutien précieux ! Grâce à eux, nous pouvons innover et donner le meilleur de nous-mêmes.</p>
         <div class="sponsors-grid">
-            <img src="renualt.png" alt="Sponsor 1" class="sponsor-logo">
-            <img src="ministere.jpg" alt="Sponsor 2" class="sponsor-logo">
-            <img src="dassault system.png" alt="Sponsor 3" class="sponsor-logo">
-            <img src="elles bougent.png" alt="Sponsor 4" class="sponsor-logo">
-            <img src="gilot.jpg" alt="Sponsor 4" class="sponsor-logo">
-            <img src="lca.png" alt="Sponsor 4" class="sponsor-logo">
-            <img src="heraud.jpg" alt="Sponsor 4" class="sponsor-logo">
-            <img src="pfa.png" alt="Sponsor 4" class="sponsor-logo">
-            <img src="amiaud.png" alt="Sponsor 4" class="sponsor-logo">
-            <img src="gaec.png" alt="Sponsor 4" class="sponsor-logo">
+            <a href="#" class="sponsor-link" data-sponsor="renualt.png"><img src="renualt.png" alt="Sponsor 1" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="ministere.jpg"><img src="ministere.jpg" alt="Sponsor 2" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="dassault system.png"><img src="dassault system.png" alt="Sponsor 3" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="elles bougent.png"><img src="elles bougent.png" alt="Sponsor 4" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="gilot.jpg"><img src="gilot.jpg" alt="Sponsor 5" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="lca.png"><img src="lca.png" alt="Sponsor 6" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="heraud.jpg"><img src="heraud.jpg" alt="Sponsor 7" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="pfa.png"><img src="pfa.png" alt="Sponsor 8" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="amiaud.png"><img src="amiaud.png" alt="Sponsor 9" class="sponsor-logo"></a>
+            <a href="#" class="sponsor-link" data-sponsor="gaec.png"><img src="gaec.png" alt="Sponsor 10" class="sponsor-logo"></a>
         </div>
     </section>
     <div class="social-section">
@@ -348,6 +348,20 @@
             '4': { name: { fr: 'Louison', en: 'Louison' }, role: { fr: 'Responsable Communication', en: 'Communication Manager' }, description: { fr: 'Gestion des réseaux sociaux et communication externe.', en: 'Social media management and external communication.' } },
             '5': { name: { fr: 'Elvis', en: 'Elvis' }, role: { fr: 'Ingénieur Motoriste', en: 'Motor Engineer' }, description: { fr: 'Recherche et développement des solutions techniques pour le moteur.', en: 'Research and development of technical solutions for the engine.' } }
         };
+
+        const sponsorsLinks = {
+            "renualt.png": "https://www.renault.fr",
+            "ministere.jpg": "https://www.education.gouv.fr",
+            "dassault system.png": "https://www.3ds.com/fr/",
+            "elles bougent.png": "https://www.ellesbougent.com",
+            "gilot.jpg": "https://www.gillot-sarl.fr/",
+            "lca.png": "https://www.lca-construction.fr/",
+            "heraud.jpg": "https://www.carrosserie-heraud.fr/",
+            "pfa.png": "https://www.pfa-auto.fr",
+            "amiaud.png": "https://www.amiaud.fr",
+            "gaec.png": "https://www.fermelesjonquilles.fr/"
+        };
+
         let currentLang = "fr";
         document.querySelectorAll('.segment').forEach(segment => {
             segment.addEventListener('click', () => {
@@ -415,6 +429,18 @@
         }
         const countdownInterval = setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // Gestion des clics sur les sponsors
+        document.querySelectorAll('.sponsor-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sponsorKey = link.getAttribute('data-sponsor');
+                const sponsorUrl = sponsorsLinks[sponsorKey];
+                if (sponsorUrl) {
+                    window.open(sponsorUrl, '_blank');
+                }
+            });
+        });
     </script>
 </body>
 </html>
