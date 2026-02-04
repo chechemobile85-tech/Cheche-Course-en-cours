@@ -106,8 +106,10 @@
         .sponsors-title { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1.5rem; }
         .sponsors-thanks { font-size: 1.1rem; color: var(--text); margin-bottom: 2rem; line-height: 1.6; }
         .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; align-items: center; margin-bottom: 2rem; }
+        .sponsor-item { text-align: center; }
         .sponsor-logo { height: 100px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(0,0,0,0.1)); transition: var(--transition); }
         .sponsor-logo:hover { transform: scale(1.05); }
+        .sponsor-description { font-size: 0.9rem; color: var(--text); margin-top: 0.5rem; line-height: 1.4; max-width: 200px; margin: 0.5rem auto 0; }
         .social-section { text-align: center; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-radius: 20px; border: 2px solid var(--secondary); }
         .social-link { display: inline-flex; align-items: center; gap: 0.8rem; padding: 1rem 2rem; background: white; border-radius: 15px; text-decoration: none; color: var(--secondary); font-weight: bold; font-size: 1.1rem; transition: var(--transition); box-shadow: 0 4px 15px rgba(194,24,91,0.2); }
         .social-link:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(194,24,91,0.3); background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%); color: white; }
@@ -298,16 +300,112 @@
         <h2 class="sponsors-title" data-fr="🤝 Nos Sponsors" data-en="🤝 Our Sponsors">🤝 Nos Sponsors</h2>
         <p class="sponsors-thanks" data-fr="Un grand merci à nos sponsors pour leur soutien précieux ! Grâce à eux, nous pouvons innover et donner le meilleur de nous-mêmes." data-en="A big thank you to our sponsors for their precious support! Thanks to them, we can innovate and give our best.">Un grand merci à nos sponsors pour leur soutien précieux ! Grâce à eux, nous pouvons innover et donner le meilleur de nous-mêmes.</p>
         <div class="sponsors-grid">
-            <a href="#" class="sponsor-link" data-sponsor="renualt.png"><img src="renualt.png" alt="Sponsor 1" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="ministere.jpg"><img src="ministere.jpg" alt="Sponsor 2" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="dassault system.png"><img src="dassault system.png" alt="Sponsor 3" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="elles bougent.png"><img src="elles bougent.png" alt="Sponsor 4" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="gilot.jpg"><img src="gilot.jpg" alt="Sponsor 5" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="lca.png"><img src="lca.png" alt="Sponsor 6" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="heraud.jpg"><img src="heraud.jpg" alt="Sponsor 7" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="pfa.png"><img src="pfa.png" alt="Sponsor 8" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="amiaud.png"><img src="amiaud.png" alt="Sponsor 9" class="sponsor-logo"></a>
-            <a href="#" class="sponsor-link" data-sponsor="gaec.png"><img src="gaec.png" alt="Sponsor 10" class="sponsor-logo"></a>
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="renualt.png">
+                    <img src="renualt.png" alt="Renault" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Partenaire principal, finance course en cours et nous donne les moteurs utilisées dans les voitures.
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="ministere.jpg">
+                    <img src="ministere.jpg" alt="Ministère de l'Éducation" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Soutien dasn la création du projet course en cours.
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="dassault system.png">
+                    <img src="dassault system.png" alt="Dassault Systèmes" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Fournit les logiciels de modélisation 3D (SolidWorks, CATIA) et un accès a leur site de gestion de projet.
+    
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="elles bougent.png">
+                    <img src="elles bougent.png" alt="Elles Bougent" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Sponsor officiel de course en cours. Participe au financement du projet global.
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="gilot.jpg">
+                    <img src="gilot.jpg" alt="Gilot" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Nous donne 50 euros.
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="lca.png">
+                    <img src="lca.png" alt="LCA" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Nous donne 50 euros.
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="heraud.jpg">
+                    <img src="heraud.jpg" alt="Héraud" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Peignent notre coque de voiture.
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="pfa.png">
+                    <img src="pfa.png" alt="PFA" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                     Sponsor officiel de course en cours. Participe au financement du projet global.
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="amiaud.png">
+                    <img src="amiaud.png" alt="Amiaud" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Nous donnent 100 euros.
+                </p>
+            </div>
+
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="gaec.png">
+                    <img src="gaec.png" alt="GAEC" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Nous donne 200 euros.
+                </p>
+            </div>
+            <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="loiseau proux.png">
+                    <img src="loiseau proux.png" alt="LOISEAUX PROUX" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Nous fournissent la peinture pour notre stand.
+                </p>
+            </div>
+             <div class="sponsor-item">
+                <a href="#" class="sponsor-link" data-sponsor="optiqueadom.png">
+                    <img src="optiqueadom.png" alt="OPTIQUEADOM" class="sponsor-logo">
+                </a>
+                <p class="sponsor-description">
+                    Nous donne 30 euros.
+                </p>
+            </div>
         </div>
     </section>
     <div class="social-section">
@@ -359,7 +457,9 @@
             "heraud.jpg": "https://www.carrosserie-heraud.fr/",
             "pfa.png": "https://www.pfa-auto.fr",
             "amiaud.png": "https://www.amiaud.fr",
-            "gaec.png": "https://www.fermelesjonquilles.fr/"
+            "gaec.png": "https://www.fermelesjonquilles.fr/",
+            "loiseau proux.png": "https://www.facebook.com/loiseauproux/?locale=fr_FR",
+            "optiqueadom.png": "https://www.optiqueadom.fr/"    
         };
 
         let currentLang = "fr";
